@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var app   = express()
 var cors = require('cors')
 var bodyParser = require('body-parser')
+require('dotenv').config()
 app.use(cors({
     origin:"*",
     optionsSuccessStatus: 200,
@@ -22,7 +23,7 @@ app.use(bodyParser.json())
 
 require("./mainRoutes")(app);
 
-app.listen(3333,()=>{
+app.listen(process.env.PORT,()=>{
     connect()
-    console.log("db connected")
+    console.log(`listening on port ${process.env.PORT}`)
 })
