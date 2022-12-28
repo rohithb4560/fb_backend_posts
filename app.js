@@ -9,7 +9,7 @@ app.use(cors({
     optionsSuccessStatus: 200,
 
 }))
-
+const port = process.env.PORT || 3000
 const connect  = ()=>{
     //TODO:change the mongoose configuration
     return mongoose.connect("mongodb+srv://fb:fb@cluster0.2978s7r.mongodb.net/?retryWrites=true&w=majority")
@@ -23,7 +23,7 @@ app.use(bodyParser.json())
 
 require("./mainRoutes")(app);
 
-app.listen(process.env.PORT,()=>{
+app.listen(port,()=>{
     connect()
     console.log(`listening on port ${process.env.PORT}`)
 })
