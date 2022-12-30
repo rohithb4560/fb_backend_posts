@@ -2,7 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 const router = require('router')
 const post = require('../index')
-const {createpost,deletepost,getpost,getAllposts} = require('../Methods/index')
+const {createpost,deletepost,getpost,getAllposts,updatePost} = require('../Methods/index')
 
 module.exports.createpost = async (req,res)=>{
     const data =await createpost(req.body)
@@ -21,6 +21,11 @@ module.exports.getpost = async (req,res)=>{
 }
 module.exports.getAllposts = async (req,res)=>{
     const data = await getAllposts(req.body)
+    res.send(data)
+}
+module.exports.updatePost = async (req,res)=>{
+ 
+    const data = await updatePost({...req.body})
     res.send(data)
 }
 
